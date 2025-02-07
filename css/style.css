@@ -1,10 +1,11 @@
 /********** Template CSS **********/
 :root {
-    --primary: #FF5E14;
+    --primary: #ED6A5A;
     --secondary: #5F656F;
     --light: #F5F5F5;
     /* --dark: #02245B; */
     --dark: black;
+    
 }
 
 .back-to-top {
@@ -39,6 +40,18 @@ h6,
     font-weight: 500 !important;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-family: "STIX Two Text", serif;
+}
+
+p,button,div,span{
+    font-family: "Noto Sans", serif;
+}
 
 /*** Spinner ***/
 #spinner {
@@ -197,7 +210,7 @@ h6,
     bottom: 0;
     display: flex;
     align-items: center;
-    background: linear-gradient(to right, rgba(2, 36, 91, 1) 0%, rgba(2, 36, 91, 0) 100%);
+    background: linear-gradient(to right, rgb(0, 0, 0) 0%, rgba(2, 36, 91, 0) 100%);
     z-index: 1;
 }
 
