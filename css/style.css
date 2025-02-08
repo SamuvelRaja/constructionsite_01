@@ -390,7 +390,7 @@ p,button,div,span{
     top: -65px;
     left: 50%;
     transform: translateX(-50%);
-    background: #FFFFFF;
+    background: #262626;
     box-shadow: 0 0 45px rgba(0, 0, 0, .09);
     z-index: 2;
 }
@@ -417,7 +417,7 @@ p,button,div,span{
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: #FFFFFF;
+    background: #262626;
     transition: .5s;
 }
 
@@ -436,7 +436,7 @@ p,button,div,span{
     display: flex;
     align-items: center;
     text-align: center;
-    background: rgba(2, 36, 91, .7);
+    background: rgba(38, 38, 38, .7);
     transition: .5s;
 }
 
@@ -452,7 +452,7 @@ p,button,div,span{
     top: -100%;
     left: 0;
     transform: skewY(-12deg);
-    background: #FFFFFF;
+    background: #262626;
     transition: .5s;
 }
 
@@ -470,15 +470,16 @@ p,button,div,span{
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--secondary);
-    background: #FFFFFF;
-    border: none;
+    color: var(--light);
+    background: #262626;
+    border: 1px solid #ED6A5A;
     box-shadow: 0 0 45px rgba(0, 0, 0, .09);
     z-index: 2;
 }
 
 .service-item .btn:hover {
     color: #FFFFFF;
+    border: 1px solid #ED6A5A;
     background: var(--primary);
 }
 
