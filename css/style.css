@@ -760,10 +760,10 @@ p,button,div,span{
             font-weight: 300;
             font-family: "Noto Sans", serif;
         }
-        .process-card:nth-child(1) { top: 140px; z-index: 4; }
-        .process-card:nth-child(2) { top: 140px; z-index: 3; }
-        .process-card:nth-child(3) { top: 140px; z-index: 2; }
-        .process-card:nth-child(4) { top: 140px; z-index: 1; }
+        .process-card:nth-child(1) { top: 140px; z-index: 1; }
+        .process-card:nth-child(2) { top: 140px; z-index: 2; }
+        .process-card:nth-child(3) { top: 140px; z-index: 3; }
+        .process-card:nth-child(4) { top: 140px; z-index: 4; }
         .process-left{
             position: relative;
         }
@@ -812,6 +812,9 @@ p,button,div,span{
         }
 .bg-violet1{
     background-color: rgb(145, 102, 196);
+}
+.text-grey{
+    color: #b6b6b6;
 }
 button,img,.btn{
     border-radius: 4px;
