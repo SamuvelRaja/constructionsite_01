@@ -833,3 +833,9 @@ button,img,.btn{
 .border-primary{
     border: 1px solid #ED6A5A;
 }
+.navbar-toggler{
+    height: 45px;
+    width: 45px;
+    padding: 0px !important;
+    background-color: #ed6a5a !important;
+}
