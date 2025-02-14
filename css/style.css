@@ -155,11 +155,21 @@ p,button,div,span{
     font-size: 18px;
     font-weight: 500;
     outline: none;
+        cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    background: linear-gradient(to right, #ed6a5a 50%, #ffffff 50%);
+    font-weight: 600;
+    transition: background-position 300ms ease;
+    background-clip: text;
+    background-size: 200% 100%;
+    background-position: 100%;
+    -webkit-text-fill-color: transparent;
 }
 
 .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link.active {
-    color: var(--primary);
+    background-position: 0 100%;
 }
 
 .navbar .dropdown-toggle::after {
