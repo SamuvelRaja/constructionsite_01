@@ -64,7 +64,7 @@
     // Project carousel
     $(".project-carousel").owlCarousel({
         autoplay: true,
-        smartSpeed: 4000,
+        smartSpeed: 3000,
         loop: true,
         center: true,
         dots: false,
@@ -95,7 +95,7 @@
 
     $(".ongoing-project-carousel").owlCarousel({
         autoplay: true,
-        smartSpeed: 4000,
+        smartSpeed: 3000,
         loop: true,
         center: true,
         dots: false,
