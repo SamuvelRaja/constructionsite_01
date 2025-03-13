@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Elevations</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS (for colors and additional styling)-->
+    <style>
+        :root {
+            --bs-primary: #000000;
+            --bs-secondary: #1e1e1e;
+            --bs-accent: #f8f8f8; /* You'll need to define defaults if they are empty in Tailwind */
+            /* ... Add other shades as needed ... */
+              --bs-primary-50: #f8f8f8;
+              --bs-primary-100: #e8e8e8;
+              --bs-primary-200: #d3d3d3;
+              --bs-primary-300: #a3a3a3;
+              --bs-primary-400: #737373;
+              --bs-primary-500: #525252;
+              --bs-primary-600: #404040;
+              --bs-primary-700: #262626;
+              --bs-primary-800: #171717;
+              --bs-primary-900: #0a0a0a;
+              --bs-primary-950: #030303;
+
+                --bs-secondary-50: #f8f8f8;
+                --bs-secondary-100: #e8e8e8;
+                --bs-secondary-200: #d3d3d3;
+                --bs-secondary-300: #a3a3a3;
+                --bs-secondary-400: #737373;
+                --bs-secondary-500: #525252;
+                --bs-secondary-600: #404040;
+                --bs-secondary-700: #262626;
+                --bs-secondary-800: #171717;
+                --bs-secondary-900: #0a0a0a;
+                --bs-secondary-950: #030303;
+
+                --bs-accent-50: #f8f8f8;
+                --bs-accent-100: #e8e8e8;
+                --bs-accent-200: #d3d3d3;
+                --bs-accent-300: #a3a3a3;
+                --bs-accent-400: #737373;
+                --bs-accent-500: #525252;
+                --bs-accent-600: #404040;
+                --bs-accent-700: #262626;
+                --bs-accent-800: #171717;
+                --bs-accent-900: #0a0a0a;
+                --bs-accent-950: #030303;
+
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Roboto', sans-serif;
+        }
+        .bg-neutral-900 { background-color: var(--bs-primary-900); }
+        .bg-neutral-800 { background-color: var(--bs-primary-800); }
+        .text-white { color: white; }
+        .text-gray-300 { color: var(--bs-primary-300); }
+        .text-gray-400 {color: var(--bs-primary-400);}
+        .text-yellow-500 { color: #facc15; } /*  Tailwind's yellow-500 */
+        .bg-yellow-500 { background-color: #facc15; }
+        .hover\:bg-yellow-600:hover { background-color: #eab308; }
+        .hover\:text-yellow-400:hover{ color: #fbbf24;}
+        .text-neutral-900 { color: var(--bs-primary-900);}
+        .btn-custom-yellow {
+            background-color: #facc15;
+            color: var(--bs-primary-900);
+        }
+        .btn-custom-yellow:hover {
+            background-color: #eab308;
+            color: var(--bs-primary-900);
+        }
+
+        .btn-custom-neutral {
+            background-color: var(--bs-primary-800);
+            color: white;
+        }
+
+        .btn-custom-neutral:hover {
+            background-color: #facc15;
+            color: var(--bs-primary-900);
+        }
+
+        /* Lightbox Styles */
+        #lightbox {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 50;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        #lightbox-content {
+            max-width: 80%;
+            max-height: 80vh;
+            position: relative;  /*For positioning close/prev/next buttons */
+        }
+        #lightbox-image{
+            max-height: 75vh;
+            max-width: 100%;
+            object-fit: contain; /* very important for correct sizing */
+            display: block;  /* Remove extra space below image */
+            margin: 0 auto; /* Center horizontally */
+        }
+
+        #lightbox-close, #lightbox-prev, #lightbox-next {
+            position: absolute;
+            color: white;
+            cursor: pointer;
+            z-index: 51; /* Ensure buttons are above the image */
+            padding: 0.5rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+        }
+        #lightbox-close{
+            top: 1rem;
+            right: 1rem;
+        }
+
+        #lightbox-prev, #lightbox-next {
+            top: 50%;
+            transform: translateY(-50%); /* Center vertically */
+            font-size: 2rem;
+        }
+        #lightbox-prev {
+            left: 1rem;
+        }
+        #lightbox-next {
+            right: 1rem;
+        }
+
+        .gallery-item {
+            transition: transform 0.3s ease; /* Add transition for hover effect */
+
+        }
+        .gallery-item:hover{
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+<body>
+
+<section id="image-gallery" class="bg-neutral-900 py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-4 fw-bold mb-3 text-white">Project <span class="text-yellow-500">Elevations</span></h2>
+            <div class="w-25 mx-auto mb-4" style="height: 2px; background-color: #facc15;"></div>
+            <p class="text-gray-300 lead mx-auto" style="max-width: 700px;">
+                Browse through our collection of architectural designs and construction projects.
+                These designs showcase our commitment to quality and attention to detail.
+            </p>
+        </div>
+
+        <!-- Filtering Controls -->
+        <div class="d-flex flex-wrap justify-content-center mb-4 gap-2">
+            <button type="button" class="filter-btn btn btn-custom-yellow rounded-pill px-4 py-2 fw-semibold active" data-filter="all">All Projects</button>
+            <button type="button" class="filter-btn btn btn-custom-neutral rounded-pill px-4 py-2 fw-semibold" data-filter="residential">Residential</button>
+            <button type="button" class="filter-btn btn btn-custom-neutral rounded-pill px-4 py-2 fw-semibold" data-filter="commercial">Commercial</button>
+            <button type="button" class="filter-btn btn btn-custom-neutral rounded-pill px-4 py-2 fw-semibold" data-filter="interior">Interior</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 gallery-container">
+            <!-- Gallery Items (Generated with a loop, see below) -->
+            <!-- Gallery Item 1 -->
+            <div class="col gallery-item" data-category="residential">
+                <div class="card bg-neutral-800 shadow">
+                    <img src="https://samuvelraja.github.io/constructionsite_01/projectsimg/Elevations/Enscape_2024-06-25-19-35-33_Enscapescene1.webp" alt="Residential Elevation" class="card-img-top" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h3 class="card-title text-white fs-5 fw-semibold mb-2">Modern Residence</h3>
+                        <p class="card-text text-gray-400 small mb-3">Contemporary design with clean lines and modern aesthetics</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">Residential</span>
+                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(0)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Item 2 -->
+            <div class="col gallery-item" data-category="residential">
+                <div class="card bg-neutral-800 shadow">
+                    <img src="https://samuvelraja.github.io/constructionsite_01/projectsimg/Elevations/Enscape_2024-02-05-21-17-06_Scene5.webp" alt="Residential Project" class="card-img-top" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h3 class="card-title text-white fs-5 fw-semibold mb-2">Family Villa</h3>
+                        <p class="card-text text-gray-400 small mb-3">Spacious villa design with elegant architectural details</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">Residential</span>
+                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(1)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Item 3 -->
+            <div class="col gallery-item" data-category="commercial">
+                <div class="card bg-neutral-800 shadow">
+                    <img src="https://samuvelraja.github.io/constructionsite_01/projectsimg/Elevations/Enscape_2024-02-07-20-30-11_Scene1.webp" alt="Commercial Building" class="card-img-top" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h3 class="card-title text-white fs-5 fw-semibold mb-2">Office Complex</h3>
+                        <p class="card-text text-gray-400 small mb-3">Modern office building with functional workspace design</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">Commercial</span>
+                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(2)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Item 4 -->
+            <div class="col gallery-item" data-category="interior">
+              <div class="card bg-neutral-800 shadow">
+                <img src="https://samuvelraja.github.io/constructionsite_01/projectsimg/Elevations/Enscape_2024-05-30-17-20-49_Enscapescene1.webp" alt="Interior Design" class="card-img-top" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                  <h3 class="card-title text-white fs-5 fw-semibold mb-2">Living Space Design</h3>
+                  <p class="card-text text-gray-400 small mb-3">Contemporary interior with open floor plan and natural light</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">Interior</span>
+                    <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(3)">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Gallery Item 5 -->
+            <div class="col gallery-item" data-category="residential">
+              <div class="card bg-neutral-800 shadow">
+                <img src="https://samuvelraja.github.io/constructionsite_01/projectsimg/Elevations/Enscape_2024-05-30-17-20-49_Enscapescene2.webp" alt="Residential Design" class="card-img-top" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                  <h3 class="card-title text-white fs-5 fw-semibold mb-2">Luxury Townhouse</h3>
+                  <p class="card-text text-gray-400 small mb-3">Urban townhouse with premium finishes and modern features</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">Residential</span>
+                    <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(4)">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Gallery Item 6 -->
+            <div class="col gallery-item" data-category="commercial">
+                <div class="card bg-neutral-800 shadow">
+                <img src="https://samuvelraja.github.io/constructionsite_01/projectsimg/Elevations/Enscape_2024-05-30-17-20-49_Enscapescene3.webp" alt="Commercial Project" class="card-img-top" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h3 class="card-title text-white fs-5 fw-semibold mb-2">Retail Complex</h3>
+                    <p class="card-text text-gray-400 small mb-3">Commercial space designed for retail and customer experience</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                    <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">Commercial</span>
+                    <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(5)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
+                        </svg>
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+                <!-- Gallery Item 7 -->
+            <div class="col gallery-item" data-category="residential">
+                <div class="card bg-neutral-800 shadow">
+                <img src="https://samuvelraja.github.io/constructionsite_01/projectsimg/Elevations/G+3Elevationdesign_Scene2.webp" alt="Residential Building" class="card-img-top" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h3 class="card-title text-white fs-5 fw-semibold mb-2">Multi-Story Residence</h3>
+                    <p class="card-text text-gray-400 small mb-3">G+3 residential building with modern architectural elements</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                    <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">Residential</span>
+                    <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(6)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
+                        </svg>
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- Gallery Item 8 -->
+
+            <div class="col gallery-item" data-category="interior">
+                <div class="card bg-neutral-800 shadow">
+                <img src="https://samuvelraja.github.io/constructionsite_01/projectsimg/Elevations/Enscape_2024-06-25-19-35-33_Enscapescene2.webp" alt="Interior Design" class="card-img-top" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h3 class="card-title text-white fs-5 fw-semibold mb-2">Modern Kitchen</h3>
+                    <p class="card-text text-gray-400 small mb-3">Contemporary kitchen design with high-end finishes</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                    <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">Interior</span>
+                    <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(7)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
+                        </svg>
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+                <!-- Gallery Item 9 -->
+            <div class="col gallery-item" data-category="commercial">
+                <div class="card bg-neutral-800 shadow">
+                <img src="https://samuvelraja.github.io/constructionsite_01/projectsimg/Elevations/Enscape_2024-12-16-23-50-26_Enscapescene1.webp" alt="Commercial Building" class="card-img-top" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h3 class="card-title text-white fs-5 fw-semibold mb-2">Corporate Headquarters</h3>
+                    <p class="card-text text-gray-400 small mb-3">Professional office building with modern architectural details</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                    <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">Commercial</span>
+                    <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(8)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
+                        </svg>
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center mt-4">
+            <button type="button" id="load-more" class="btn btn-custom-yellow rounded-pill px-5 py-2 fw-bold">
+                Load More
+            </button>
+        </div>
+    </div>
+
+    <!-- Lightbox (Modal) -->
+    <div id="lightbox">
+        <button id="lightbox-close" aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <button id="lightbox-prev" aria-label="Previous">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+        <div id="lightbox-content">
+             <img id="lightbox-image" src="" alt="Project Image">
+        </div>
+        <button id="lightbox-next" aria-label="Next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+    </div>
+</section>
+
+
+
+<!-- Bootstrap 5 JS (optional, if you need JS components like tooltips, modals, etc.) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body></html>

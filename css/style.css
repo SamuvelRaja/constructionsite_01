@@ -390,6 +390,8 @@ p,button,div,span{
     position: relative;
     margin: 65px 0 25px 0;
     box-shadow: 0 0 45px rgba(0, 0, 0, .07);
+    min-height: 355px;
+    display: flex;
 }
 
 .service-item .service-img {
@@ -414,6 +416,7 @@ p,button,div,span{
     left: 0;
     overflow: hidden;
     z-index: 1;
+    min-height: 355px;
 }
 
 .service-item .service-title {
