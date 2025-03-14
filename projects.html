@@ -147,7 +147,59 @@
         .gallery-item:hover{
             transform: scale(1.05);
         }
+        
+        /* deep */
+        #lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
 
+#lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+#lightbox-image {
+    max-height: 80vh;
+    max-width: 100%;
+}
+
+#lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#lightbox-prev,
+#lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+#lightbox-prev { left: 20px; }
+#lightbox-next { right: 20px; }
+
+body.lightbox-open {
+    overflow: hidden;
+}
     </style>
 </head>
 <body>
@@ -172,18 +224,18 @@
         </div>
 
         <!-- Gallery Grid -->
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 gallery-container">
+        
+        
+        <div id="2Dplan" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 gallery-container">
             <!-- Gallery Items (Generated with a loop, see below) -->
             <!-- Gallery Item 1 -->
-            <div class="col gallery-item" data-category="residential">
+            <div class="col gallery-item" data-category="2D plan">
                 <div class="card bg-neutral-800 shadow">
-                    <img src="https://samuvelraja.github.io/constructionsite_01/projectsimg/Elevations/Enscape_2024-06-25-19-35-33_Enscapescene1.webp" alt="Residential Elevation" class="card-img-top" style="height: 200px; object-fit: cover;">
+                    <img src="./projectsimg/2D Plans/Ayyampakkam-Floor.webp" alt="2D plan Elevation" class="card-img-top" >
                     <div class="card-body">
-                        <h3 class="card-title text-white fs-5 fw-semibold mb-2">Modern Residence</h3>
-                        <p class="card-text text-gray-400 small mb-3">Contemporary design with clean lines and modern aesthetics</p>
                         <div class="d-flex justify-content-between align-items-center">
-                            <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">Residential</span>
-                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(0)">
+                            <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">2D plan</span>
+                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox('./projectsimg/2D Plans/Ayyampakkam-Floor.webp')">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
                                 </svg>
@@ -194,15 +246,13 @@
             </div>
 
             <!-- Gallery Item 2 -->
-            <div class="col gallery-item" data-category="residential">
+            <div class="col gallery-item" data-category="2D plan">
                 <div class="card bg-neutral-800 shadow">
-                    <img src="https://samuvelraja.github.io/constructionsite_01/projectsimg/Elevations/Enscape_2024-02-05-21-17-06_Scene5.webp" alt="Residential Project" class="card-img-top" style="height: 200px; object-fit: cover;">
+                    <img src="./projectsimg/2D Plans/Ayyampakkam.webp" alt="2D plan Project" class="card-img-top" >
                     <div class="card-body">
-                        <h3 class="card-title text-white fs-5 fw-semibold mb-2">Family Villa</h3>
-                        <p class="card-text text-gray-400 small mb-3">Spacious villa design with elegant architectural details</p>
                         <div class="d-flex justify-content-between align-items-center">
-                            <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">Residential</span>
-                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(1)">
+                            <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">2D plan</span>
+                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox('./projectsimg/2D Plans/Ayyampakkam.webp')">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
                                 </svg>
@@ -213,15 +263,13 @@
             </div>
 
             <!-- Gallery Item 3 -->
-            <div class="col gallery-item" data-category="commercial">
+            <div class="col gallery-item" data-category="2D plan">
                 <div class="card bg-neutral-800 shadow">
-                    <img src="https://samuvelraja.github.io/constructionsite_01/projectsimg/Elevations/Enscape_2024-02-07-20-30-11_Scene1.webp" alt="Commercial Building" class="card-img-top" style="height: 200px; object-fit: cover;">
+                    <img src="./projectsimg/2D Plans/Stislt Floor copy.webp" alt="2D plan Building" class="card-img-top" >
                     <div class="card-body">
-                        <h3 class="card-title text-white fs-5 fw-semibold mb-2">Office Complex</h3>
-                        <p class="card-text text-gray-400 small mb-3">Modern office building with functional workspace design</p>
                         <div class="d-flex justify-content-between align-items-center">
-                            <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">Commercial</span>
-                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(2)">
+                            <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">2D plan</span>
+                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox('./projectsimg/2D Plans/Stislt Floor copy.webp')">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
                                 </svg>
@@ -230,119 +278,22 @@
                     </div>
                 </div>
             </div>
-
             <!-- Gallery Item 4 -->
-            <div class="col gallery-item" data-category="interior">
-              <div class="card bg-neutral-800 shadow">
-                <img src="https://samuvelraja.github.io/constructionsite_01/projectsimg/Elevations/Enscape_2024-05-30-17-20-49_Enscapescene1.webp" alt="Interior Design" class="card-img-top" style="height: 200px; object-fit: cover;">
-                <div class="card-body">
-                  <h3 class="card-title text-white fs-5 fw-semibold mb-2">Living Space Design</h3>
-                  <p class="card-text text-gray-400 small mb-3">Contemporary interior with open floor plan and natural light</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">Interior</span>
-                    <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(3)">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Gallery Item 5 -->
-            <div class="col gallery-item" data-category="residential">
-              <div class="card bg-neutral-800 shadow">
-                <img src="https://samuvelraja.github.io/constructionsite_01/projectsimg/Elevations/Enscape_2024-05-30-17-20-49_Enscapescene2.webp" alt="Residential Design" class="card-img-top" style="height: 200px; object-fit: cover;">
-                <div class="card-body">
-                  <h3 class="card-title text-white fs-5 fw-semibold mb-2">Luxury Townhouse</h3>
-                  <p class="card-text text-gray-400 small mb-3">Urban townhouse with premium finishes and modern features</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">Residential</span>
-                    <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(4)">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Gallery Item 6 -->
-            <div class="col gallery-item" data-category="commercial">
+            <div class="col gallery-item" data-category="2D plan">
                 <div class="card bg-neutral-800 shadow">
-                <img src="https://samuvelraja.github.io/constructionsite_01/projectsimg/Elevations/Enscape_2024-05-30-17-20-49_Enscapescene3.webp" alt="Commercial Project" class="card-img-top" style="height: 200px; object-fit: cover;">
-                <div class="card-body">
-                    <h3 class="card-title text-white fs-5 fw-semibold mb-2">Retail Complex</h3>
-                    <p class="card-text text-gray-400 small mb-3">Commercial space designed for retail and customer experience</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                    <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">Commercial</span>
-                    <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(5)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
-                        </svg>
-                    </button>
+                    <img src="./projectsimg/2D Plans/Unit Plan copy.webp" alt="2D plan Building" class="card-img-top" >
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">2D plan</span>
+                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox('./projectsimg/2D Plans/Unit Plan copy.webp')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                </div>
             </div>
-                <!-- Gallery Item 7 -->
-            <div class="col gallery-item" data-category="residential">
-                <div class="card bg-neutral-800 shadow">
-                <img src="https://samuvelraja.github.io/constructionsite_01/projectsimg/Elevations/G+3Elevationdesign_Scene2.webp" alt="Residential Building" class="card-img-top" style="height: 200px; object-fit: cover;">
-                <div class="card-body">
-                    <h3 class="card-title text-white fs-5 fw-semibold mb-2">Multi-Story Residence</h3>
-                    <p class="card-text text-gray-400 small mb-3">G+3 residential building with modern architectural elements</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                    <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">Residential</span>
-                    <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(6)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
-                        </svg>
-                    </button>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <!-- Gallery Item 8 -->
-
-            <div class="col gallery-item" data-category="interior">
-                <div class="card bg-neutral-800 shadow">
-                <img src="https://samuvelraja.github.io/constructionsite_01/projectsimg/Elevations/Enscape_2024-06-25-19-35-33_Enscapescene2.webp" alt="Interior Design" class="card-img-top" style="height: 200px; object-fit: cover;">
-                <div class="card-body">
-                    <h3 class="card-title text-white fs-5 fw-semibold mb-2">Modern Kitchen</h3>
-                    <p class="card-text text-gray-400 small mb-3">Contemporary kitchen design with high-end finishes</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                    <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">Interior</span>
-                    <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(7)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
-                        </svg>
-                    </button>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-                <!-- Gallery Item 9 -->
-            <div class="col gallery-item" data-category="commercial">
-                <div class="card bg-neutral-800 shadow">
-                <img src="https://samuvelraja.github.io/constructionsite_01/projectsimg/Elevations/Enscape_2024-12-16-23-50-26_Enscapescene1.webp" alt="Commercial Building" class="card-img-top" style="height: 200px; object-fit: cover;">
-                <div class="card-body">
-                    <h3 class="card-title text-white fs-5 fw-semibold mb-2">Corporate Headquarters</h3>
-                    <p class="card-text text-gray-400 small mb-3">Professional office building with modern architectural details</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                    <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">Commercial</span>
-                    <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(8)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
-                        </svg>
-                    </button>
-                    </div>
-                </div>
-                </div>
-            </div>
-
         </div>
 
         <!-- Load More Button -->
@@ -355,7 +306,7 @@
 
     <!-- Lightbox (Modal) -->
     <div id="lightbox">
-        <button id="lightbox-close" aria-label="Close">
+        <button id="lightbox-close" aria-label="Close" onclick="closeLightbox()">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
@@ -376,7 +327,86 @@
     </div>
 </section>
 
+<script>
+   // Lightbox functionality
+let currentLightboxIndex = 0;
+let imageSources = [];
 
+// Initialize lightbox (should be called after any dynamic content loads)
+function initLightbox() {
+    const galleryImageElements = document.querySelectorAll('.gallery-item .card-img-top');
+    imageSources = Array.from(galleryImageElements).map(img => img.getAttribute('src'));
+}
+
+function openLightbox(src) {
+    // Find clicked image index
+    const index = imageSources.indexOf(src);
+    if (index === -1) return;
+    
+    currentLightboxIndex = index;
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    
+    // Update and show lightbox
+    lightboxImage.src = src;
+    lightbox.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Prevent scrolling behind lightbox
+    document.addEventListener('keydown', handleKeyboardNavigation);
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    document.removeEventListener('keydown', handleKeyboardNavigation);
+}
+
+function showPrevImage() {
+    currentLightboxIndex = (currentLightboxIndex - 1 + imageSources.length) % imageSources.length;
+    updateLightboxImage();
+}
+
+function showNextImage() {
+    currentLightboxIndex = (currentLightboxIndex + 1) % imageSources.length;
+    updateLightboxImage();
+}
+
+function updateLightboxImage() {
+    const lightboxImage = document.getElementById('lightbox-image');
+    lightboxImage.src = imageSources[currentLightboxIndex];
+}
+
+function handleKeyboardNavigation(e) {
+    switch(e.key) {
+        case 'ArrowLeft':
+            showPrevImage();
+            break;
+        case 'ArrowRight':
+            showNextImage();
+            break;
+        case 'Escape':
+            closeLightbox();
+            break;
+    }
+}
+
+// Event listeners
+document.addEventListener('DOMContentLoaded', () => {
+    initLightbox();
+    
+    document.getElementById('lightbox-prev').addEventListener('click', showPrevImage);
+    document.getElementById('lightbox-next').addEventListener('click', showNextImage);
+    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+        if (e.target === this) closeLightbox();
+    });
+});
+
+// Reinitialize lightbox when new items are loaded (call this after adding new gallery items)
+function refreshLightbox() {
+    initLightbox();
+}
+</script>
 
 <!-- Bootstrap 5 JS (optional, if you need JS components like tooltips, modals, etc.) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
