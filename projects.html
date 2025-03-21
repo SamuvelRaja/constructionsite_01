@@ -217,11 +217,10 @@ body.lightbox-open {
 
         <!-- Filtering Controls -->
         <div class="d-flex flex-wrap justify-content-center mb-4 gap-2">
-            <button type="button" class="filter-btn btn btn-custom-yellow rounded-pill px-4 py-2 fw-semibold active" data-filter="2Dplan">All Projects</button>
-            <button type="button" class="filter-btn btn btn-custom-neutral rounded-pill px-4 py-2 fw-semibold" data-filter="residential">Residential</button>
-            <button type="button" class="filter-btn btn btn-custom-neutral rounded-pill px-4 py-2 fw-semibold" data-filter="commercial">Commercial</button>
-            <button type="button" class="filter-btn btn btn-custom-neutral rounded-pill px-4 py-2 fw-semibold" data-filter="interior">Interior</button>
-        </div>
+    <button type="button" class="tab-btn btn btn-custom-yellow rounded-pill px-4 py-2 fw-semibold active" data-section="2Dplan">2D Plan</button>
+    <button type="button" class="tab-btn btn btn-custom-neutral rounded-pill px-4 py-2 fw-semibold" data-section="elevation">Elevation</button>
+    <button type="button" class="tab-btn btn btn-custom-neutral rounded-pill px-4 py-2 fw-semibold" data-section="interior">Interior</button>
+</div>
 
         <!-- Gallery Grid -->
         
@@ -295,6 +294,47 @@ body.lightbox-open {
                 </div>
             </div>
         </div>
+        <div id="elevation" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 gallery-container" style="display: none;">
+    <!-- Elevation Images -->
+    <!-- Gallery Item 1 -->
+            <div class="col gallery-item" data-category="2D plan">
+                <div class="card bg-neutral-800 shadow">
+                    <img src="./projectsimg/Elevations/Closeup.webp" alt="2D plan Elevation" class="card-img-top" >
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">2D plan</span>
+                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox('./projectsimg/2D Plans/Ayyampakkam-Floor.webp')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!-- Add more elevation images -->
+</div>
+
+<div id="interior" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 gallery-container" style="display: none;">
+    <!-- Interior Images -->
+    <!-- Gallery Item 1 -->
+            <div class="col gallery-item" data-category="2D plan">
+                <div class="card bg-neutral-800 shadow">
+                    <img src="./projectsimg/Interior/Confrence Room/Enscape_2024-03-20-12-22-48_Enscape scene 10.webp" alt="2D plan Elevation" class="card-img-top" >
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">2D plan</span>
+                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox('./projectsimg/2D Plans/Ayyampakkam-Floor.webp')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!-- Add more interior images -->
+</div>
 
         <!-- Load More Button -->
         <div class="text-center mt-4">
@@ -328,18 +368,73 @@ body.lightbox-open {
 </section>
 
 <script>
+    // Tab Switching and Hash Handling
+const tabButtons = document.querySelectorAll('.tab-btn');
+const sections = document.querySelectorAll('.gallery-container');
+
+function switchSection(sectionId) {
+    // Hide all sections
+    sections.forEach(section => {
+        section.style.display = 'none';
+    });
+    
+    // Show selected section
+    const activeSection = document.getElementById(sectionId);
+    if (activeSection) {
+        activeSection.style.display = 'flex';
+    }
+    
+    // Update button styles
+    tabButtons.forEach(btn => {
+        btn.classList.remove('active', 'btn-custom-yellow');
+        btn.classList.add('btn-custom-neutral');
+        if (btn.dataset.section === sectionId) {
+            btn.classList.add('active', 'btn-custom-yellow');
+            btn.classList.remove('btn-custom-neutral');
+        }
+    });
+    
+    // Update URL without scrolling
+    history.replaceState(null, null, `#${sectionId}`);
+}
+
+// Event listeners for tabs
+tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const sectionId = btn.dataset.section;
+        switchSection(sectionId);
+    });
+});
+
+// Handle initial hash and hash changes
+function checkHash() {
+    const hash = window.location.hash.substring(1);
+    const validSections = ['2Dplan', 'elevation', 'interior'];
+    
+    if (validSections.includes(hash)) {
+        switchSection(hash);
+    } else {
+        switchSection('2Dplan');
+    }
+}
+
+window.addEventListener('load', checkHash);
+window.addEventListener('hashchange', checkHash);
+
+// Lightbox initialization (modified to handle all sections)
+function initLightbox() {
+    const galleryImageElements = document.querySelectorAll('.gallery-item .card-img-top');
+    imageSources = Array.from(galleryImageElements).map(img => img.src);
+}
    // Lightbox functionality
 let currentLightboxIndex = 0;
 let imageSources = [];
 
-// Initialize lightbox (should be called after any dynamic content loads)
-function initLightbox() {
-    const galleryImageElements = document.querySelectorAll('.gallery-item .card-img-top');
-    imageSources = Array.from(galleryImageElements).map(img => img.getAttribute('src'));
-}
+
 
 function openLightbox(src) {
     // Find clicked image index
+    console.log(src,"dd")
     const index = imageSources.indexOf(src);
     if (index === -1) return;
     
