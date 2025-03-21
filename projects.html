@@ -200,6 +200,9 @@
 body.lightbox-open {
     overflow: hidden;
 }
+ body>section{
+      min-height: 100vh;
+    }
     </style>
 </head>
 <body>
@@ -234,7 +237,7 @@ body.lightbox-open {
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">2D plan</span>
-                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox('./projectsimg/2D Plans/Ayyampakkam-Floor.webp')">
+                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(this)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
                                 </svg>
@@ -251,7 +254,7 @@ body.lightbox-open {
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">2D plan</span>
-                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox('./projectsimg/2D Plans/Ayyampakkam.webp')">
+                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(this)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
                                 </svg>
@@ -268,7 +271,7 @@ body.lightbox-open {
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">2D plan</span>
-                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox('./projectsimg/2D Plans/Stislt Floor copy.webp')">
+                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(this)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
                                 </svg>
@@ -284,7 +287,7 @@ body.lightbox-open {
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">2D plan</span>
-                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox('./projectsimg/2D Plans/Unit Plan copy.webp')">
+                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(this)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
                                 </svg>
@@ -303,7 +306,7 @@ body.lightbox-open {
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">2D plan</span>
-                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox('./projectsimg/2D Plans/Ayyampakkam-Floor.webp')">
+                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(this)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
                                 </svg>
@@ -324,7 +327,7 @@ body.lightbox-open {
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="badge bg-yellow-500 text-neutral-900 fw-bold py-1 px-2 rounded">2D plan</span>
-                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox('./projectsimg/2D Plans/Ayyampakkam-Floor.webp')">
+                            <button class="btn btn-link text-yellow-500 p-0" onclick="openLightbox(this)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
                                 </svg>
@@ -421,29 +424,33 @@ function checkHash() {
 window.addEventListener('load', checkHash);
 window.addEventListener('hashchange', checkHash);
 
-// Lightbox initialization (modified to handle all sections)
-function initLightbox() {
-    const galleryImageElements = document.querySelectorAll('.gallery-item .card-img-top');
-    imageSources = Array.from(galleryImageElements).map(img => img.src);
-}
+
    // Lightbox functionality
 let currentLightboxIndex = 0;
 let imageSources = [];
 
+// Lightbox initialization (modified to handle all sections)
+function initLightbox() {
+    const galleryImageElements = document.querySelectorAll('#image-gallery .card-img-top');
+    imageSources = Array.from(galleryImageElements).map(img => img.src);
+    // console.log(galleryImageElements,imageSources,"dd")
+}
 
-
-function openLightbox(src) {
+function openLightbox(elem) {
     // Find clicked image index
-    console.log(src,"dd")
-    const index = imageSources.indexOf(src);
+    console.log(elem)
+    const thissrc=elem.closest('.gallery-item').querySelector('img').src
+    console.log(thissrc,imageSources,"dd")
+    const index = imageSources.indexOf(thissrc);
+    console.log(index,"dd")
     if (index === -1) return;
-    
+    console.log("src,","dd")
     currentLightboxIndex = index;
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightbox-image');
     
     // Update and show lightbox
-    lightboxImage.src = src;
+    lightboxImage.src = thissrc;
     lightbox.style.display = 'flex';
     document.body.style.overflow = 'hidden'; // Prevent scrolling behind lightbox
     document.addEventListener('keydown', handleKeyboardNavigation);
