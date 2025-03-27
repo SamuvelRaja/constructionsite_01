@@ -1580,7 +1580,7 @@ tabButtons.forEach(btn => {
 // Handle initial hash and hash changes
 function checkHash() {
     const hash = window.location.hash.substring(1);
-    const validSections = ['2Dplan', 'elevation', 'interior','isometric','layout'];
+    const validSections = ['2Dplan', 'Elevation', 'Interior','Isometric','Layout'];
     
     if (validSections.includes(hash)) {
         switchSection(hash);
@@ -1606,13 +1606,13 @@ function initLightbox() {
 
 function openLightbox(elem) {
     // Find clicked image index
-    console.log(elem)
-    const thissrc=elem.closest('.gallery-item').querySelector('img').src
+    
+    const thissrc=elem.querySelector('img').src
     console.log(thissrc,imageSources,"dd")
     const index = imageSources.indexOf(thissrc);
-    console.log(index,"dd")
+    
     if (index === -1) return;
-    console.log("src,","dd")
+    
     currentLightboxIndex = index;
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightbox-image');
