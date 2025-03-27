@@ -239,7 +239,7 @@ body.lightbox-open {
                 <a href="#projects" class="nav-item nav-link">Projects</a>
                 <a href="/gallery.html" class="nav-item nav-link">Gallery</a>
             </div>
-            <a href="#contact" class="btn btn-primary px-3 d-none d-lg-block">Get A Quote</a>
+            <a href="./index.html#contact" class="btn btn-primary px-3 d-none d-lg-block">Get A Quote</a>
         </div>
         </nav>
     </header>
@@ -247,7 +247,7 @@ body.lightbox-open {
 <section id="image-gallery" class="bg-neutral-900 py-5">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="display-4 fw-bold mb-3 text-white">Project <span class="text-yellow-500">Elevations</span></h2>
+            <h2 class="display-4 fw-bold mb-3 text-white"><span id="secttitle"></span><span class="text-yellow-500"> Projects </span></h2>
             <div class="w-25 mx-auto mb-4" style="height: 2px; background-color: #ED6A5A;"></div>
             <p class="text-gray-300 lead mx-auto" style="max-width: 700px;">
                 Browse through our collection of architectural designs and construction projects.
@@ -258,10 +258,10 @@ body.lightbox-open {
         <!-- Filtering Controls -->
         <div class="d-flex flex-wrap justify-content-center mb-4 gap-2">
     <button type="button" class="tab-btn btn btn-custom-yellow rounded-pill px-4 py-2 fw-semibold active" data-section="2Dplan">2D Plan</button>
-    <button type="button" class="tab-btn btn btn-custom-neutral rounded-pill px-4 py-2 fw-semibold" data-section="elevation">Elevation</button>
-    <button type="button" class="tab-btn btn btn-custom-neutral rounded-pill px-4 py-2 fw-semibold" data-section="interior">Interior</button>
-    <button type="button" class="tab-btn btn btn-custom-neutral rounded-pill px-4 py-2 fw-semibold" data-section="isomatric">isomatric</button>
-    <button type="button" class="tab-btn btn btn-custom-neutral rounded-pill px-4 py-2 fw-semibold" data-section="layout">layout</button>
+    <button type="button" class="tab-btn btn btn-custom-neutral rounded-pill px-4 py-2 fw-semibold" data-section="Elevation">Elevation</button>
+    <button type="button" class="tab-btn btn btn-custom-neutral rounded-pill px-4 py-2 fw-semibold" data-section="Interior">Interior</button>
+    <button type="button" class="tab-btn btn btn-custom-neutral rounded-pill px-4 py-2 fw-semibold" data-section="Isomatric">isomatric</button>
+    <button type="button" class="tab-btn btn btn-custom-neutral rounded-pill px-4 py-2 fw-semibold" data-section="Layout">layout</button>
     
 </div>
 
@@ -337,7 +337,7 @@ body.lightbox-open {
                 </div>
             </div>
         </div>
-        <div id="elevation" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 gallery-container" style="display: none;">
+        <div id="Elevation" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 gallery-container" style="display: none;">
     <!-- Gallery Item 1 -->
     <div class="col gallery-item" data-category="elevation">
         <div class="card bg-neutral-800 shadow">
@@ -747,7 +747,7 @@ body.lightbox-open {
     </div>
 </div>
 
-<div id="interior" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 gallery-container" style="display: none;">
+<div id="Interior" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 gallery-container" style="display: none;">
     <!-- Conference Room (already added, continuing with remaining images) -->
     <div class="col gallery-item" data-category="interior">
         <div class="card bg-neutral-800 shadow">
@@ -1814,8 +1814,8 @@ body.lightbox-open {
     </div>
  </div>
 
-</div>
- <div id="isomatric" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 gallery-container">
+
+ <div id="Isomatric" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 gallery-container">
     <div class="col gallery-item" data-category="interior">
         <div class="card bg-neutral-800 shadow">
             <img src="./projectsimg/IsomatricView/isometricoption1.webp" alt="Interior Image" class="card-img-top">
@@ -1847,7 +1847,7 @@ body.lightbox-open {
         </div>
     </div>
  </div>
- <div id="layout" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 gallery-container">
+ <div id="Layout" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 gallery-container">
     
     <div class="col gallery-item" data-category="interior">
         <div class="card bg-neutral-800 shadow">
@@ -1865,7 +1865,7 @@ body.lightbox-open {
         </div>
     </div>
  </div>
-
+</div>
 
     <!-- Lightbox (Modal) -->
     <div id="lightbox">
@@ -1941,8 +1941,10 @@ function switchSection(sectionId) {
     
     // Show selected section
     const activeSection = document.getElementById(sectionId);
+    const activeTitle=document.getElementById("secttitle")
     if (activeSection) {
         activeSection.style.display = 'flex';
+        activeTitle.textContent=sectionId
     }
     
     // Update button styles
