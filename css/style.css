@@ -664,7 +664,20 @@ p,button,div,span{
     font-size: 45px;
     transition: .5s;
 }
-
+.owl-nav .owl-prev{
+    display: flex;
+    padding: 4px;
+    width: 36px;
+    height: 36px;
+    background: #ED6A5A;
+    border-radius: 999px;
+    justify-content: center;
+    align-items: center;
+}
+div.owl-nav{
+    display: none;
+    
+}
 .testimonial-carousel .owl-nav .owl-prev:hover,
 .testimonial-carousel .owl-nav .owl-next:hover {
     color: var(--dark);
@@ -892,6 +905,9 @@ footer .footcol{
 }
 .owl-item{
     border-left: 1px solid black;
+}
+.fa.fa-envelope{
+    margin-top: 4px;
 }
         @media (max-width: 991.98px) {
             .sticky-cards {
