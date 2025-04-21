@@ -856,6 +856,10 @@ footer .footcol{
     max-width: 240px;
     margin: 0 auto;
 }
+.service-item image{
+    max-height: 355px;
+    width: 100%;
+}
    .whatsapp-btn {
             position: fixed;
             bottom: 20px;
