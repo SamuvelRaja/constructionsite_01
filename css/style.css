@@ -913,6 +913,10 @@ footer .footcol{
 .fa.fa-envelope{
     margin-top: 4px;
 }
+.service-item img{
+    max-height: 355px;
+    width: 100%;
+}
         @media (max-width: 991.98px) {
             .sticky-cards {
                 min-height: auto;
