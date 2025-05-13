@@ -660,12 +660,11 @@ p,button,div,span{
     font-size: 45px;
     transition: .5s;
 }
-.owl-nav .owl-prev{
+#header-carousel .owl-nav .owl-prev{
     display: flex;
     padding: 4px;
     width: 36px;
     height: 36px;
-    background: #ED6A5A;
     border-radius: 999px;
     justify-content: center;
     align-items: center;
